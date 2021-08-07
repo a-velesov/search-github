@@ -1,12 +1,10 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import { SearchBar } from './components/SearchBar/SearchBar'
 
-function App() {
+export const App = (): JSX.Element => {
   return (
-    <div className="App">
-      test
+    <div>
+      <SearchBar onSearchOrganization={(id) => console.log(id)} />
     </div>
-  );
+  )
 }
-
-export default App;
