@@ -1,0 +1,37 @@
+.section {
+    display: flex;
+}
+
+.info {
+    display: flex;
+    padding: 0 20px;
+    flex-direction: column;
+}
+
+
+.logo {
+    display: flex;
+    align-items: flex-start;
+}
+
+.logo__img {
+    width: 130px;
+}
+
+.name {
+    font-size: 20px;
+}
+
+.description {
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.blog, .location {
+    display: flex;
+    justify-content: space-between;
+}
+
+.svg {
+    padding-right: 10px;
+}

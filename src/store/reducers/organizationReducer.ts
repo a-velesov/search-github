@@ -3,7 +3,7 @@ import { OrganizationActions, OrganizationActionTypes } from '../actions/organiz
 
 export interface IOrganization {
   name: string
-  url: string
+  blog: string
   avatar_url: string
   description: string
   location: string
@@ -17,7 +17,7 @@ export interface IInitialState {
 const initialState: IInitialState = {
   general: {
     name: '',
-    url: '',
+    blog: '',
     avatar_url: '',
     description: '',
     location: '',
@@ -35,7 +35,7 @@ export const organizationReducer: Reducer<IInitialState, OrganizationActions> = 
         ...state,
         general: {
           name: action.payload.name,
-          url: action.payload.url,
+          blog: action.payload.blog,
           avatar_url: action.payload.avatar_url,
           description: action.payload.description,
           location: action.payload.location,
