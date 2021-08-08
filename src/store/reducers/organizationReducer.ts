@@ -9,8 +9,20 @@ export interface IOrganization {
   location: string
 }
 
+export interface IReposOrganization {
+  id: number
+  name: string
+  language: string
+  description: string
+  stargazers_count: number
+  forks: number
+  watchers: number
+  html_url: string
+}
+
 export interface IInitialState {
   general: IOrganization
+  repos: IReposOrganization[]
   loading: boolean
 }
 
@@ -22,6 +34,7 @@ const initialState: IInitialState = {
     description: '',
     location: '',
   },
+  repos: [],
   loading: false,
 }
 
@@ -42,22 +55,12 @@ export const organizationReducer: Reducer<IInitialState, OrganizationActions> = 
         },
       }
     }
-    case OrganizationActionTypes.LOADING_ORGANIZATION: {
+    case OrganizationActionTypes.GET_REPOS_ORGANIZATION: {
       return {
         ...state,
-        loading: action.payload,
+        repos: action.payload,
       }
     }
-    default:
-      return state
-  }
-}
-
-export const loadingReducer: Reducer<IInitialState, OrganizationActions> = (
-  state = initialState,
-  action
-) => {
-  switch (action.type) {
     case OrganizationActionTypes.LOADING_ORGANIZATION: {
       return {
         ...state,
