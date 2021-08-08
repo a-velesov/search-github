@@ -32,6 +32,17 @@
     justify-content: space-between;
 }
 
+.url {
+    text-decoration: none;
+    color: dimgray;
+}
+
 .svg {
-    padding-right: 10px;
+    margin-right: 10px;
+}
+
+@media (max-width: 450px) {
+    .svg {
+        display: none;
+    }
 }

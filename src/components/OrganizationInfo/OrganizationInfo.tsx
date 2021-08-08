@@ -31,7 +31,7 @@ export const OrganizationInfo = (): JSX.Element => {
             {organization.blog && (
               <span>
                 <LinkSvg className={styles.svg} />
-                <a href={organization.blog} target="_blank" rel="noreferrer">
+                <a className={styles.url} href={organization.blog} target="_blank" rel="noreferrer">
                   {organization.blog}
                 </a>
               </span>

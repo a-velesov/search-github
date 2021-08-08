@@ -7,6 +7,7 @@ export enum OrganizationActionTypes {
   GET_ORGANIZATION = 'GET_ORGANIZATION',
   GET_REPOS_ORGANIZATION = 'GET_REPOS_ORGANIZATION',
   LOADING_ORGANIZATION = 'LOADING_ORGANIZATION',
+  LOADING_FAILED = 'LOADING_FAILED',
 }
 
 export interface IGetOrganization {
@@ -24,7 +25,16 @@ export interface ILoadingInterface {
   payload: boolean
 }
 
-export type OrganizationActions = IGetOrganization | ILoadingInterface | IGetReposOrganization
+export interface ILoadingFailed {
+  type: OrganizationActionTypes.LOADING_FAILED
+  payload: string
+}
+
+export type OrganizationActions =
+  | IGetOrganization
+  | ILoadingInterface
+  | IGetReposOrganization
+  | ILoadingFailed
 
 export const getOrganization: ActionCreator<
   ThunkAction<Promise<any>, IInitialState, null, IGetOrganization>
@@ -38,6 +48,7 @@ export const getOrganization: ActionCreator<
         payload: response.data,
       })
     } catch (e) {
+      dispatch(loadingFailed(e?.message))
     } finally {
       dispatch(loadingHandler(false))
     }
@@ -51,12 +62,12 @@ export const getReposOrganization: ActionCreator<
     try {
       dispatch(loadingHandler(true))
       const response = await axios.get(`${process.env.REACT_APP_GITHUB_API}/${organization}/repos`)
-      console.log(response, 'res')
       dispatch({
         type: OrganizationActionTypes.GET_REPOS_ORGANIZATION,
         payload: response.data,
       })
     } catch (e) {
+      dispatch(loadingFailed(e?.message))
     } finally {
       dispatch(loadingHandler(false))
     }
@@ -67,5 +78,12 @@ export const loadingHandler: ActionCreator<ILoadingInterface> = (boolean: boolea
   return {
     type: OrganizationActionTypes.LOADING_ORGANIZATION,
     payload: boolean,
+  }
+}
+
+export const loadingFailed: ActionCreator<ILoadingFailed> = (message: string) => {
+  return {
+    type: OrganizationActionTypes.LOADING_FAILED,
+    payload: message,
   }
 }

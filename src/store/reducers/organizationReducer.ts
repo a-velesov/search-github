@@ -24,6 +24,7 @@ export interface IInitialState {
   general: IOrganization
   repos: IReposOrganization[]
   loading: boolean
+  error: string
 }
 
 const initialState: IInitialState = {
@@ -36,6 +37,7 @@ const initialState: IInitialState = {
   },
   repos: [],
   loading: false,
+  error: '',
 }
 
 export const organizationReducer: Reducer<IInitialState, OrganizationActions> = (
@@ -65,6 +67,12 @@ export const organizationReducer: Reducer<IInitialState, OrganizationActions> = 
       return {
         ...state,
         loading: action.payload,
+      }
+    }
+    case OrganizationActionTypes.LOADING_FAILED: {
+      return {
+        ...state,
+        error: action.payload,
       }
     }
     default:
