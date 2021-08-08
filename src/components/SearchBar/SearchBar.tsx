@@ -1,13 +1,17 @@
 import React, { useState, SyntheticEvent } from 'react'
 import { Props } from './SearchBar.props'
 import styles from './SearchBar.module.css'
+import { useDispatch } from 'react-redux'
+import { getOrganization } from '../../store/actions/organizationActions'
 
 export const SearchBar = ({ onSearchOrganization }: Props): JSX.Element => {
   const [term, setTerm] = useState('')
+  const dispatch = useDispatch()
 
   const handleFormSubmit = (e: SyntheticEvent) => {
     e.preventDefault()
     onSearchOrganization(term)
+    dispatch(getOrganization(term))
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
