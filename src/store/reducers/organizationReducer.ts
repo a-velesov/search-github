@@ -9,15 +9,23 @@ export interface IOrganization {
   location: string
 }
 
-const initialState: IOrganization = {
-  name: '',
-  url: '',
-  avatar_url: '',
-  description: '',
-  location: '',
+export interface IInitialState {
+  general: IOrganization
+  loading: boolean
 }
 
-export const organizationReducer: Reducer<IOrganization, OrganizationActions> = (
+const initialState: IInitialState = {
+  general: {
+    name: '',
+    url: '',
+    avatar_url: '',
+    description: '',
+    location: '',
+  },
+  loading: false,
+}
+
+export const organizationReducer: Reducer<IInitialState, OrganizationActions> = (
   state = initialState,
   action
 ) => {
@@ -25,11 +33,35 @@ export const organizationReducer: Reducer<IOrganization, OrganizationActions> = 
     case OrganizationActionTypes.GET_ORGANIZATION: {
       return {
         ...state,
-        name: action.payload.name,
-        url: action.payload.url,
-        avatar_url: action.payload.avatar_url,
-        description: action.payload.description,
-        location: action.payload.location,
+        general: {
+          name: action.payload.name,
+          url: action.payload.url,
+          avatar_url: action.payload.avatar_url,
+          description: action.payload.description,
+          location: action.payload.location,
+        },
+      }
+    }
+    case OrganizationActionTypes.LOADING_ORGANIZATION: {
+      return {
+        ...state,
+        loading: action.payload,
+      }
+    }
+    default:
+      return state
+  }
+}
+
+export const loadingReducer: Reducer<IInitialState, OrganizationActions> = (
+  state = initialState,
+  action
+) => {
+  switch (action.type) {
+    case OrganizationActionTypes.LOADING_ORGANIZATION: {
+      return {
+        ...state,
+        loading: action.payload,
       }
     }
     default:

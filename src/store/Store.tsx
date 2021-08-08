@@ -1,10 +1,9 @@
 import { applyMiddleware, combineReducers, compose, createStore, Store } from 'redux'
 import thunk from 'redux-thunk'
-import { IOrganization, organizationReducer } from './reducers/organizationReducer'
+import { IInitialState, organizationReducer } from './reducers/organizationReducer'
 
-// Create an interface for the application state
 export interface IAppState {
-  organization: IOrganization
+  organization: IInitialState
 }
 
 const rootReducer = combineReducers<IAppState>({
