@@ -8,13 +8,10 @@ import { ReactComponent as LinkSvg } from './../../assets/url.svg'
 
 export const OrganizationInfo = (): JSX.Element => {
   const organization = useSelector((state: IAppState) => state.organization.general)
-  const loading = useSelector((state: IAppState) => state.organization.loading)
 
   return (
     <section className={styles.section}>
-      {loading ? (
-        <Loading />
-      ) : organization.name ? (
+      {organization.name ? (
         <>
           <div className={styles.logo}>
             {organization.avatar_url && (

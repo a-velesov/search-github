@@ -20,6 +20,10 @@
     margin-top: 20px;
 }
 
+.info > span > svg {
+    margin-right: 5px;
+}
+
 .watchers,
 .stargazers,
 .language,
