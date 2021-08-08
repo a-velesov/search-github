@@ -2,7 +2,7 @@ import React, { useState, SyntheticEvent } from 'react'
 import { Props } from './SearchBar.props'
 import styles from './SearchBar.module.css'
 import { useDispatch } from 'react-redux'
-import { getOrganization } from '../../store/actions/organizationActions'
+import { getOrganization, getReposOrganization } from '../../store/actions/organizationActions'
 
 export const SearchBar = ({ onSearchOrganization }: Props): JSX.Element => {
   const [term, setTerm] = useState('')
@@ -12,6 +12,7 @@ export const SearchBar = ({ onSearchOrganization }: Props): JSX.Element => {
     e.preventDefault()
     onSearchOrganization(term)
     dispatch(getOrganization(term))
+    dispatch(getReposOrganization(term))
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

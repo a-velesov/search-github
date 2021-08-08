@@ -1,0 +1,32 @@
+.repository {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid gray;
+}
+
+.repository:hover {
+    background-color: rgb(246, 246, 246);
+}
+
+.url {
+    text-decoration: none;
+    color: dimgray;
+    font-weight: bold;
+}
+
+.info {
+    display: flex;
+    margin-top: 20px;
+}
+
+.watchers,
+.stargazers,
+.language,
+.forks {
+    display: flex;
+    margin-right: 20px;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
