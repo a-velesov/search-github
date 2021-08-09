@@ -1,48 +1,48 @@
 .section {
-    display: flex;
+  display: flex;
 }
 
 .info {
-    display: flex;
-    padding: 0 20px;
-    flex-direction: column;
+  display: flex;
+  padding: 0 20px;
+  flex-direction: column;
 }
 
-
 .logo {
-    display: flex;
-    align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
 }
 
 .logo__img {
-    width: 150px;
+  width: 150px;
 }
 
 .name {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .description {
-    font-size: 16px;
-    margin: 20px 0;
+  font-size: 16px;
+  margin: 20px 0;
 }
 
-.blog, .location {
-    display: flex;
-    justify-content: space-between;
+.blog,
+.location {
+  display: flex;
+  justify-content: space-between;
 }
 
 .url {
-    text-decoration: none;
-    color: dimgray;
+  text-decoration: none;
+  color: dimgray;
 }
 
 .svg {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 @media (max-width: 450px) {
-    .svg {
-        display: none;
-    }
+  .svg {
+    display: none;
+  }
 }
